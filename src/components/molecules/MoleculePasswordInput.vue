@@ -11,7 +11,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import AtomInput from '@/components/atoms/AtomInput.vue'
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="space-y-4">
+    <div class="space-y-8">
         <fieldset
             class="mx-auto flex w-2/3 flex-wrap items-center gap-4 border p-4"
         >

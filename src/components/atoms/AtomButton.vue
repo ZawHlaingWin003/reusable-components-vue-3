@@ -110,17 +110,17 @@ const themeClass = computed(() => {
     } else {
         switch (props.variant) {
             case 'primary':
-                return 'text-white bg-blue-500 border border-blue-500 hover:bg-blue-400 active:bg-blue-600'
+                return 'text-white bg-blue-500 border border-blue-500 hover:border-blue-400 hover:bg-blue-400 active:bg-blue-600'
             case 'secondary':
-                return 'text-white bg-gray-500 border border-gray-500 hover:bg-gray-400 active:bg-gray-600'
+                return 'text-white bg-gray-500 border border-gray-500 hover:border-gray-400 hover:bg-gray-400 active:bg-gray-600'
             case 'success':
-                return 'text-white bg-green-500 border border-green-500 hover:bg-green-400 active:bg-green-600'
+                return 'text-white bg-green-500 border border-green-500 hover:border-green-400 hover:bg-green-400 active:bg-green-600'
             case 'warning':
-                return 'text-white bg-orange-500 border border-orange-500 hover:bg-orange-400 active:bg-orange-600'
+                return 'text-white bg-orange-500 border border-orange-500 hover:border-orange-400 hover:bg-orange-400 active:bg-orange-600'
             case 'danger':
-                return 'text-white bg-red-500 border border-red-500 hover:bg-red-400 active:bg-red-600'
+                return 'text-white bg-red-500 border border-red-500 hover:border-red-400 hover:bg-red-400 active:bg-red-600'
             default:
-                return 'text-white bg-blue-500 border border-blue-500 hover:bg-blue-400 active:bg-blue-600'
+                return 'text-white bg-blue-500 border border-blue-500 hover:border-blue-400 hover:bg-blue-400 active:bg-blue-600'
         }
     }
 })

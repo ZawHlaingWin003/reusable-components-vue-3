@@ -1,5 +1,5 @@
 <template>
-    <label :for="props.for" class="text-sm">
+    <label :for="props.for" class="mb-1 inline-block text-sm">
         <slot />
         <span class="ml-1 text-red-600" v-if="props.required">*</span>
     </label>

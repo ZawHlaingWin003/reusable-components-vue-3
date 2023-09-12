@@ -1,81 +1,159 @@
 <template>
-    <main>
+    <main class="space-y-8">
         <form @submit.prevent="submit">
-            <MoleculeInputGroup label="Name" required :error="errors.name">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">Normal Form Input</legend>
                 <AtomInput
                     type="text"
-                    placeholder="Enter Your Name ..."
-                    v-model="form.name"
-                />
-            </MoleculeInputGroup>
-            <MoleculeInputGroup
-                label="Email"
-                id="email"
-                required
-                :error="errors.email"
-                help="We'll not share your mail."
-            >
-                <AtomInput
-                    type="text"
-                    placeholder="Enter Your Email ..."
+                    placeholder="Name"
                     v-model="form.email"
                 />
-            </MoleculeInputGroup>
-
-            <div class="input-group my-3">
-                <MoleculeIconInput>
-                    <template #icon>
-                        <IconCommunity />
-                    </template>
-                </MoleculeIconInput>
-            </div>
-
-            <div class="input-group my-3">
-                <MoleculePasswordInput></MoleculePasswordInput>
-            </div>
-
-            <div class="input-group my-3">
-                <AtomLabel for="password" required>Password</AtomLabel>
                 <AtomInput
                     type="text"
-                    placeholder="Enter Your Password ..."
-                    id="password"
-                    v-model="form.password"
-                    required
-                    :invalid="!!errors.password"
+                    placeholder="Email"
+                    v-model="form.email"
                 />
-                <AtomInputErrorMessage v-if="errors.password">
-                    {{ errors.password }}
-                </AtomInputErrorMessage>
-                <AtomInputHelperMessage id="helper-password">
-                    Should be at least 8 characters long.
-                </AtomInputHelperMessage>
-            </div>
+            </fieldset>
+        </form>
+        <form @submit.prevent="submit">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">Input with Label</legend>
 
-            <div class="input-group my-3">
-                <AtomLabel for="content" required>Content</AtomLabel>
-                <AtomTextarea
-                    id="content"
-                    v-model="form.content"
+                <div class="input-group">
+                    <AtomLabel for="name" required>Username</AtomLabel>
+                    <AtomInput
+                        type="text"
+                        v-model="form.name"
+                        id="name"
+                        required
+                    />
+                </div>
+
+                <div class="input-group">
+                    <AtomLabel for="password" required>Password</AtomLabel>
+                    <AtomInput
+                        type="password"
+                        id="password"
+                        v-model="form.password"
+                        required
+                    />
+                    <AtomInputHelperMessage id="helper-password">
+                        Should be at least 8 characters long.
+                    </AtomInputHelperMessage>
+                </div>
+            </fieldset>
+        </form>
+
+        <form @submit.prevent="submit">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">Error Inputs</legend>
+
+                <div class="input-group">
+                    <AtomLabel for="name" required>Username</AtomLabel>
+                    <AtomInput
+                        type="text"
+                        v-model="form.name"
+                        :invalid="!!errors.name"
+                        id="name"
+                        required
+                    />
+                    <AtomInputErrorMessage v-if="errors.name">
+                        {{ errors.name }}
+                    </AtomInputErrorMessage>
+                </div>
+
+                <div class="input-group">
+                    <AtomLabel for="password" required>Password</AtomLabel>
+                    <AtomInput
+                        type="password"
+                        id="password"
+                        v-model="form.password"
+                        :invalid="!!errors.password"
+                        required
+                    />
+                    <AtomInputErrorMessage v-if="errors.password">
+                        {{ errors.password }}
+                    </AtomInputErrorMessage>
+                    <AtomInputHelperMessage id="helper-password">
+                        Should be at least 8 characters long.
+                    </AtomInputHelperMessage>
+                </div>
+
+                <AtomButton type="submit">Submit</AtomButton>
+            </fieldset>
+        </form>
+
+        <form @submit.prevent="submit">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">Textarea</legend>
+                <div class="input-group">
+                    <AtomLabel for="content" required>Content</AtomLabel>
+                    <AtomTextarea
+                        id="content"
+                        v-model="form.content"
+                        required
+                        :invalid="!!errors.content"
+                    />
+                    <AtomInputErrorMessage v-if="errors.content">
+                        {{ errors.content }}
+                    </AtomInputErrorMessage>
+                </div>
+                <MoleculeInputGroup
+                    label="Content"
                     required
-                    :invalid="!!errors.content"
-                />
-                <AtomInputErrorMessage v-if="errors.content">
-                    {{ errors.content }}
-                </AtomInputErrorMessage>
-            </div>
+                    :error="errors.content"
+                >
+                    <AtomAutosizeTextarea
+                        :invalid="!!errors.content"
+                        v-model="form.content"
+                    />
+                </MoleculeInputGroup>
 
-            <div class="input-group my-3">
-                <AtomLabel>Biography</AtomLabel>
-                <AtomAutosizeTextarea rows="2" v-model="form.biography" />
-            </div>
+                <AtomButton type="submit">Submit</AtomButton>
+            </fieldset>
+        </form>
 
-            <button
-                type="submit"
-                class="rounded-sm bg-blue-400 px-4 py-2 hover:bg-blue-300 active:bg-blue-500"
-            >
-                Submit
-            </button>
+        <form @submit.prevent="submit">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">All In One</legend>
+                <MoleculeInputGroup label="Name" required :error="errors.name">
+                    <AtomInput
+                        type="text"
+                        placeholder="Enter Your Name ..."
+                        v-model="form.name"
+                    />
+                </MoleculeInputGroup>
+                <MoleculeInputGroup
+                    label="Email"
+                    id="email"
+                    required
+                    :error="errors.email"
+                    help="We'll not share your mail."
+                >
+                    <AtomInput
+                        type="text"
+                        placeholder="Enter Your Email ..."
+                        v-model="form.email"
+                    />
+                </MoleculeInputGroup>
+
+                <AtomButton type="submit">Submit</AtomButton>
+            </fieldset>
+        </form>
+
+        <form @submit.prevent="submit">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">Input With Icons</legend>
+                <div class="input-group my-3">
+                    <MoleculeIconInput>
+                        <template #icon>
+                            <IconCommunity />
+                        </template>
+                    </MoleculeIconInput>
+                </div>
+
+                <AtomButton type="submit">Submit</AtomButton>
+            </fieldset>
         </form>
     </main>
 </template>
@@ -85,6 +163,7 @@ import { ref } from 'vue'
 
 import AtomLabel from '../components/atoms/AtomLabel.vue'
 import AtomInput from '@/components/atoms/AtomInput.vue'
+import AtomButton from '@/components/atoms/AtomButton.vue'
 import AtomInputErrorMessage from '../components/atoms/AtomInputErrorMessage.vue'
 import AtomInputHelperMessage from '../components/atoms/AtomInputHelperMessage.vue'
 import AtomTextarea from '@/components/atoms/AtomTextarea.vue'
@@ -97,7 +176,9 @@ import MoleculePasswordInput from '../components/molecules/MoleculePasswordInput
 const form = ref({
     name: '',
     email: '',
+    phone: '',
     password: '',
+    title: '',
     content: '',
     biography: ''
 })

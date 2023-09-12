@@ -1,22 +1,17 @@
 <template>
-    <textarea
+    <AtomTextarea
+        :modelValue="modelValue"
+        :id="id"
+        :invalid="!!invalid"
         ref="el"
-        :class="[
-            'w-full rounded-md border-[1.5px] p-2 text-black transition focus:border-blue-800 focus:outline-none disabled:border-gray-400 disabled:bg-gray-200',
-            props.invalid
-                ? 'border-red-500 focus:border-red-700'
-                : 'border-gray-300'
-        ]"
-        :id="props.id"
-        :value="props.modelValue"
-        :required="props.required"
-        @input="($event) => emit('update:modelValue', $event.target.value)"
-    ></textarea>
+        @update:modelValue="$emit('update:modelValue', $event)"
+    />
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import autosize from 'autosize'
+import AtomTextarea from './AtomTextarea.vue'
 
 const props = defineProps({
     id: String,
@@ -26,15 +21,20 @@ const props = defineProps({
     ariaDescribedBy: String
 })
 
-const emit = defineEmits(['update:modelValue'])
-
-const el = ref()
+const el = ref<InstanceType<typeof AtomTextarea> | null>(null)
 
 onMounted(() => {
-    autosize(el.value)
+    const textareaElement = el.value?.$refs.el
+    if (textareaElement) {
+        autosize(textareaElement)
+    }
 })
+
 onBeforeUnmount(() => {
-    autosize.destroy(el.value)
+    const textareaElement = el.value?.$refs.el
+    if (textareaElement) {
+        autosize.destroy(textareaElement)
+    }
 })
 </script>
 

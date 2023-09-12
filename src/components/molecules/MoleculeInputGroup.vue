@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { provide, computed } from 'vue'
 
 import AtomLabel from '@/components/atoms/AtomLabel.vue'
