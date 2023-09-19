@@ -30,10 +30,10 @@
                 </div>
 
                 <div class="input-group">
-                    <AtomLabel for="password" required>Password</AtomLabel>
+                    <AtomLabel for="password2" required>Password</AtomLabel>
                     <AtomInput
                         type="password"
-                        id="password"
+                        id="password2"
                         v-model="form.password"
                         required
                     />
@@ -49,12 +49,12 @@
                 <legend class="px-2 font-semibold">Error Inputs</legend>
 
                 <div class="input-group">
-                    <AtomLabel for="name" required>Username</AtomLabel>
+                    <AtomLabel for="username" required>Username</AtomLabel>
                     <AtomInput
                         type="text"
                         v-model="form.name"
                         :invalid="!!errors.name"
-                        id="name"
+                        id="username"
                         required
                     />
                     <AtomInputErrorMessage v-if="errors.name">
@@ -143,6 +143,14 @@
 
         <form @submit.prevent="submit">
             <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
+                <legend class="px-2 font-semibold">All In One</legend>
+
+                <MoleculeFloatingLabelInput />
+            </fieldset>
+        </form>
+
+        <form @submit.prevent="submit">
+            <fieldset class="mx-auto w-2/3 space-y-4 border p-4">
                 <legend class="px-2 font-semibold">Input With Icons</legend>
                 <div class="input-group my-3">
                     <MoleculeIconInput>
@@ -151,6 +159,7 @@
                         </template>
                     </MoleculeIconInput>
                 </div>
+                <MoleculePasswordInput></MoleculePasswordInput>
 
                 <AtomButton type="submit">Submit</AtomButton>
             </fieldset>
@@ -172,6 +181,7 @@ import AtomAutosizeTextarea from '../components/atoms/AtomAutosizeTextarea.vue'
 import MoleculeIconInput from '../components/molecules/MoleculeIconInput.vue'
 import IconCommunity from '@/components/icons/IconCommunity.vue'
 import MoleculePasswordInput from '../components/molecules/MoleculePasswordInput.vue'
+import MoleculeFloatingLabelInput from '../components/molecules/MoleculeFloatingLabelInput.vue'
 
 const form = ref({
     name: '',
