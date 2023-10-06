@@ -28,6 +28,11 @@ const router = createRouter({
             path: '/selects',
             name: 'selects',
             component: () => import('../pages/Selects.vue')
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: () => import('../pages/Test.vue')
         }
     ]
 })

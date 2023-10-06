@@ -19,19 +19,27 @@
         </MoleculeFieldsetBox>
 
         <MoleculeFieldsetBox title="Theme Buttons">
-            <AtomButton variant="primary"> Primary </AtomButton>
-            <AtomButton variant="secondary"> Secondary </AtomButton>
-            <AtomButton variant="success"> Success </AtomButton>
-            <AtomButton variant="warning"> Warning </AtomButton>
-            <AtomButton variant="danger"> Danger </AtomButton>
+            <AtomButton intent="primary"> Primary </AtomButton>
+            <AtomButton intent="secondary"> Secondary </AtomButton>
+            <AtomButton intent="success"> Success </AtomButton>
+            <AtomButton intent="warning"> Warning </AtomButton>
+            <AtomButton intent="danger"> Danger </AtomButton>
         </MoleculeFieldsetBox>
 
         <MoleculeFieldsetBox title="Outline Buttons">
-            <AtomButton variant="primary" outline> Primary </AtomButton>
-            <AtomButton variant="secondary" outline> Secondary </AtomButton>
-            <AtomButton variant="success" outline> Success </AtomButton>
-            <AtomButton variant="warning" outline> Warning </AtomButton>
-            <AtomButton variant="danger" outline> Danger </AtomButton>
+            <AtomButton intent="primary" outline> Primary </AtomButton>
+            <AtomButton intent="secondary" outline> Secondary </AtomButton>
+            <AtomButton intent="success" outline> Success </AtomButton>
+            <AtomButton intent="warning" outline> Warning </AtomButton>
+            <AtomButton intent="danger" outline> Danger </AtomButton>
+        </MoleculeFieldsetBox>
+
+        <MoleculeFieldsetBox title="Badge Buttons">
+            <AtomButton size="badge" intent="primary"> Primary </AtomButton>
+            <AtomButton size="badge" intent="secondary"> Secondary </AtomButton>
+            <AtomButton size="badge" intent="success"> Success </AtomButton>
+            <AtomButton size="badge" intent="warning"> Warning </AtomButton>
+            <AtomButton size="badge" intent="danger"> Danger </AtomButton>
         </MoleculeFieldsetBox>
 
         <MoleculeFieldsetBox title="Icon Buttons (Via prop)">
@@ -66,18 +74,8 @@
             </AtomButton>
         </MoleculeFieldsetBox>
 
-        <MoleculeFieldsetBox title="Badge Buttons">
-            <AtomButton size="badge" variant="primary"> Primary </AtomButton>
-            <AtomButton size="badge" variant="secondary">
-                Secondary
-            </AtomButton>
-            <AtomButton size="badge" variant="success"> Success </AtomButton>
-            <AtomButton size="badge" variant="warning"> Warning </AtomButton>
-            <AtomButton size="badge" variant="danger"> Danger </AtomButton>
-        </MoleculeFieldsetBox>
-
         <MoleculeFieldsetBox title="Loading & Disabled Buttons">
-            <AtomButton disabled :leftIcon="IconDocumentation">
+            <AtomButton intent="danger" disabled :leftIcon="IconDocumentation">
                 Disabled Button
             </AtomButton>
             <AtomButton isLoading>
@@ -102,7 +100,7 @@
                 :disabled="isButtonLoading"
                 @click.prevent="loadButton"
             >
-                Disabled Button
+                Our Ecosystem
             </AtomButton>
             <AtomButton
                 :rightIcon="IconDocumentation"
@@ -110,7 +108,7 @@
                 :disabled="isButtonLoading"
                 @click.prevent="loadButton"
             >
-                Disabled Button
+                Read Documentation
             </AtomButton>
             <AtomButton
                 :isLeftIconLoading="isButtonLoading"
@@ -118,9 +116,19 @@
                 @click.prevent="loadButton"
             >
                 <template #left-icon>
-                    <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-regular fa-paper-plane"></i>
                 </template>
-                Disabled Button
+                Send Mail
+            </AtomButton>
+            <AtomButton
+                :isRightIconLoading="isButtonLoading"
+                :disabled="isButtonLoading"
+                @click.prevent="loadButton"
+            >
+                <template #right-icon>
+                    <i class="fa-regular fa-floppy-disk"></i>
+                </template>
+                Save Item
             </AtomButton>
         </MoleculeFieldsetBox>
 

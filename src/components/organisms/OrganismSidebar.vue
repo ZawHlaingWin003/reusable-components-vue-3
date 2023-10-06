@@ -45,7 +45,7 @@ const sidebarLinks = ref([
         text: 'Inputs'
     },
     {
-        to: '/selects',
+        to: '/test',
         icon: 'fa-solid fa-square-caret-down',
         text: 'Selects'
     }
