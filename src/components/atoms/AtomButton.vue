@@ -8,9 +8,9 @@
         <template v-else>
             <div
                 v-if="props.leftIcon"
-                class="mr-2 flex h-5 w-5 items-center justify-center"
+                class="flex items-center justify-center w-5 h-5 mr-2"
             >
-                <div class="h-full w-full">
+                <div class="w-full h-full">
                     <component
                         :is="props.leftIcon"
                         :class="[
@@ -23,7 +23,7 @@
             </div>
 
             <div
-                class="flex h-5 w-5 items-center justify-center"
+                class="flex items-center justify-center w-5 h-5"
                 v-if="$slots['left-icon']"
             >
                 <span class="text-lg">
@@ -47,7 +47,7 @@
         </template>
         <template v-else>
             <div
-                class="flex h-5 w-5 items-center justify-center"
+                class="flex items-center justify-center w-5 h-5"
                 v-if="$slots['right-icon']"
             >
                 <span class="text-lg">
@@ -57,9 +57,9 @@
 
             <div
                 v-if="props.rightIcon"
-                class="ml-2 flex h-5 w-5 items-center justify-center"
+                class="flex items-center justify-center w-5 h-5 ml-2"
             >
-                <div class="h-full w-full">
+                <div class="w-full h-full">
                     <component
                         :is="props.rightIcon"
                         :class="[
@@ -99,9 +99,16 @@ const props: any = defineProps({
         type: Boolean,
         default: false
     },
-    rounded: {
+    intentDisabled: {
         type: Boolean,
         default: false
+    },
+    rounded: {
+        type: String,
+        validator(value: string) {
+            return ['circle', 'md', 'lg'].includes(value)
+        },
+        default: 'md'
     },
     block: {
         type: Boolean,
@@ -144,8 +151,9 @@ const buttonClass = computed(() => {
                 true: 'disabled:text-gray-300 disabled:border-gray-400 disabled:bg-gray-400 disabled:hover:border-gray-400 disabled:hover:bg-gray-400 disabled:active:bg-gray-400 disabled:cursor-not-allowed'
             },
             rounded: {
-                true: 'rounded-3xl',
-                false: 'rounded-sm'
+                circle: 'w-10 h-10 rounded-full',
+                lg: 'rounded-3xl',
+                md: 'rounded-sm'
             },
             block: {
                 true: 'w-full',
@@ -161,8 +169,21 @@ const buttonClass = computed(() => {
         compoundVariants: [
             {
                 intent: 'primary',
+                intentDisabled: true,
+                outline: false,
+                class: 'text-white bg-blue-500 border-blue-500 opacity-50 cursor-not-allowed'
+            },
+            {
+                intent: 'primary',
+                intentDisabled: false,
                 outline: true,
                 class: 'text-blue-500 bg-white border-blue-500 hover:text-white hover:bg-blue-500 active:bg-blue-600'
+            },
+            {
+                intent: 'primary',
+                intentDisabled: true,
+                outline: true,
+                class: 'text-blue-500 bg-white border-blue-500 opacity-50 cursor-not-allowed'
             },
             {
                 intent: 'primary',
@@ -213,7 +234,7 @@ const buttonClass = computed(() => {
         defaultVariants: {
             intent: 'primary',
             outline: false,
-            rounded: false,
+            rounded: 'md',
             block: false,
             size: 'md'
         }
@@ -221,6 +242,7 @@ const buttonClass = computed(() => {
         intent: props.intent,
         outline: props.outline,
         disabled: props.disabled,
+        intentDisabled: props.intentDisabled,
         rounded: props.rounded,
         block: props.block,
         size: props.size

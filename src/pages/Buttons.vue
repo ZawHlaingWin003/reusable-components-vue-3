@@ -34,6 +34,27 @@
             <AtomButton intent="danger" outline> Danger </AtomButton>
         </MoleculeFieldsetBox>
 
+        <MoleculeFieldsetBox title="Intent Disabled Buttons">
+            <AtomButton intent="primary" intent-disabled is-loading>
+                Primary
+            </AtomButton>
+            <AtomButton intent="secondary" intent-disabled>
+                Secondary
+            </AtomButton>
+            <AtomButton intent="success" intent-disabled> Success </AtomButton>
+            <AtomButton intent="warning" intent-disabled> Warning </AtomButton>
+            <AtomButton intent="danger" intent-disabled> Danger </AtomButton>
+            <AtomButton intent="primary" intent-disabled outline is-loading>
+                Primary
+            </AtomButton>
+            <AtomButton intent="secondary" intent-disabled>
+                Secondary
+            </AtomButton>
+            <AtomButton intent="success" intent-disabled> Success </AtomButton>
+            <AtomButton intent="warning" intent-disabled> Warning </AtomButton>
+            <AtomButton intent="danger" intent-disabled> Danger </AtomButton>
+        </MoleculeFieldsetBox>
+
         <MoleculeFieldsetBox title="Badge Buttons">
             <AtomButton size="badge" intent="primary"> Primary </AtomButton>
             <AtomButton size="badge" intent="secondary"> Secondary </AtomButton>
@@ -132,10 +153,52 @@
             </AtomButton>
         </MoleculeFieldsetBox>
 
+        <MoleculeFieldsetBox title="Intent Disabled Loading Buttons">
+            <AtomButton
+                :intent-disabled="isButtonLoading"
+                :is-loading="isButtonLoading"
+                @click.prevent="loadButton"
+            >
+                Primary
+            </AtomButton>
+            <AtomButton
+                :intent-disabled="isButtonLoading"
+                :is-loading="isButtonLoading"
+                intent="secondary"
+                @click.prevent="loadButton"
+            >
+                Secondary
+            </AtomButton>
+            <AtomButton
+                :intent-disabled="isButtonLoading"
+                :is-loading="isButtonLoading"
+                intent="success"
+                @click.prevent="loadButton"
+            >
+                Success
+            </AtomButton>
+            <AtomButton
+                :intent-disabled="isButtonLoading"
+                :is-loading="isButtonLoading"
+                intent="warning"
+                @click.prevent="loadButton"
+            >
+                Warning
+            </AtomButton>
+            <AtomButton
+                :intent-disabled="isButtonLoading"
+                :is-loading="isButtonLoading"
+                intent="danger"
+                @click.prevent="loadButton"
+            >
+                Danger
+            </AtomButton>
+        </MoleculeFieldsetBox>
+
         <MoleculeFieldsetBox title="Rounded Buttons">
-            <AtomButton rounded> Rounded </AtomButton>
-            <AtomButton rounded> SM </AtomButton>
-            <AtomButton rounded>
+            <AtomButton rounded="lg"> Rounded </AtomButton>
+            <AtomButton rounded="lg"> LG </AtomButton>
+            <AtomButton rounded="circle" outline intent="danger">
                 <IconEcosystem />
             </AtomButton>
         </MoleculeFieldsetBox>
